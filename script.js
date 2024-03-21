@@ -216,23 +216,23 @@ tag: ${JSON.stringify(this.tag, null, 2)}
 
   addTooltip(id) {
     const tooltip = document.createElement('tooltip');
-    tooltip.innerHTML = `
-<github-md>
-### ${id} - ${generateRandomDescription()}
+    const markdown = document.createElement('github-md');
+    markdown.innerHTML = `
+  ### ${id} - ${generateRandomDescription()}
 
-#### Things to do
+  #### Things to do
 
-- [ ] Add a description
-- [x] Add a link to the issue
-- [ ] Add a link to the project
+  - [ ] Add a description
+  - [x] Add a link to the issue
+  - [ ] Add a link to the project
 
-\`\`\`javascript
-  const let var static = 'string';
-\`\`\`
-</github-md>
+  \`\`\`javascript
+    const let var static = 'string';
+  \`\`\`
     `;
 
-    return tooltip.outerHTML;
+    tooltip.appendChild(markdown);
+    return tooltip;
   }
 
   addTagToTarget({ id, name, type}) {
@@ -250,10 +250,10 @@ tag: ${JSON.stringify(this.tag, null, 2)}
     });
 
     tag.innerHTML = `${id}`;
-    tag.innerHTML += this.addTooltip(id);
-
     tag.appendChild(button);
+    tag.appendChild(this.addTooltip(id));
     tags.prepend(tag);
+    renderMarkdown();
   }
 
   removeTagFromTarget({ id, name, type }) {
