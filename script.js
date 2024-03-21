@@ -214,11 +214,11 @@ tag: ${JSON.stringify(this.tag, null, 2)}
     this.bindEvents();
   }
 
-  addTooltip(id) {
+  addTooltip(name) {
     const tooltip = document.createElement('tooltip');
     const markdown = document.createElement('github-md');
     markdown.innerHTML = `
-### \${name} - ${generateRandomDescription()}
+### \#${name} - ${generateRandomDescription()}
 
 ##### Things to do
 
@@ -251,7 +251,7 @@ const let var static = 'string';
 
     tag.innerHTML = `${id}`;
     tag.appendChild(button);
-    tag.appendChild(this.addTooltip(id));
+    tag.appendChild(this.addTooltip(name));
     tags.prepend(tag);
     renderMarkdown();
   }
