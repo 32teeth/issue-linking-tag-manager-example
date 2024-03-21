@@ -218,18 +218,18 @@ tag: ${JSON.stringify(this.tag, null, 2)}
     const tooltip = document.createElement('tooltip');
     const markdown = document.createElement('github-md');
     markdown.innerHTML = `
-  ### ${id} - ${generateRandomDescription()}
+# ${id} - ${generateRandomDescription()}
 
-  #### Things to do
+#### Things to do
 
-  - [ ] Add a description
-  - [x] Add a link to the issue
-  - [ ] Add a link to the project
+- [ ] Add a description
+- [x] Add a link to the issue
+- [ ] Add a link to the project
 
-  \`\`\`javascript
-    const let var static = 'string';
-  \`\`\`
-    `;
+\`\`\`javascript
+const let var static = 'string';
+\`\`\`
+`;
 
     tooltip.appendChild(markdown);
     return tooltip;
