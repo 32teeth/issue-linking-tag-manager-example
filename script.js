@@ -218,7 +218,7 @@ tag: ${JSON.stringify(this.tag, null, 2)}
     const tooltip = document.createElement('tooltip');
     const markdown = document.createElement('github-md');
     markdown.innerHTML = `
-### ${id} - ${generateRandomDescription()}
+### \${name} - ${generateRandomDescription()}
 
 ##### Things to do
 
