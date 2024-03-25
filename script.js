@@ -113,6 +113,7 @@ tag: ${JSON.stringify(this.tag, null, 2)}
             this.setAttribute('data-tags', JSON.stringify(this.tags));
 
           case 'cancel':
+            this.unCheckTheCheckBox();
             break;
         };
         this.tag = {
@@ -235,6 +236,12 @@ const let var static = 'string';
     return tooltip;
   }
 
+  unCheckTheCheckBox() {
+    // uncehck checkbox
+    const checkbox = document.querySelector(`input#create-tag[type="checkbox"]`);
+    checkbox.checked = false;
+  }
+
   addTagToTarget({ id, name, type}) {
     const tags = document.querySelector(this.target);
     const tag = document.createElement('tag');
@@ -253,7 +260,9 @@ const let var static = 'string';
     tag.appendChild(button);
     tag.appendChild(this.addTooltip(name));
     tags.prepend(tag);
-    renderMarkdown();
+    if(renderMarkdown) renderMarkdown();
+
+    this.unCheckTheCheckBox();
   }
 
   removeTagFromTarget({ id, name, type }) {
@@ -294,7 +303,11 @@ const let var static = 'string';
 
     this.querySelectorAll('button').forEach((button) => {
       this.tag.id !== '' && this.tag.type !== 'undefined' ? button.removeAttribute('disabled') : button.setAttribute('disabled', 'disabled');
+      if(button.getAttribute('data-action') === 'cancel') {
+        button.removeAttribute('disabled');
+      }
     })
+
 
     if (this.DEBUG) {
       this.debugger();
