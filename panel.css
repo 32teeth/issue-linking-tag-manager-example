@@ -93,3 +93,7 @@ action input[type="checkbox"]:checked + label + ui-tag {
 }
 
 
+pre > code {
+  width: 100px;
+  display: flex;
+}
