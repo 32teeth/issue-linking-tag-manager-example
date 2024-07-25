@@ -432,3 +432,7 @@ item {
   font-variant-emoji: text;
 }
 
+pre > code {
+  width: 100px;
+  display: flex;
+}
